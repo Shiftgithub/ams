@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2021 at 01:07 PM
+-- Generation Time: Mar 24, 2021 at 01:59 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -63,6 +63,28 @@ CREATE TABLE `file` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `goal`
+--
+
+CREATE TABLE `goal` (
+  `id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `percentage` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `goal`
+--
+
+INSERT INTO `goal` (`id`, `quantity`, `percentage`) VALUES
+(1, 10, '10%'),
+(2, 15, '25%'),
+(3, 20, '40%'),
+(4, 24, '50%');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nid`
 --
 
@@ -82,6 +104,38 @@ CREATE TABLE `reference` (
   `user_id` int(11) NOT NULL,
   `ref_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sale_promotion`
+--
+
+CREATE TABLE `sale_promotion` (
+  `id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `profit_percentage` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `type`
+--
+
+INSERT INTO `type` (`id`, `name`) VALUES
+(1, 'Super Admin'),
+(2, 'Admin'),
+(3, 'Marketing Executive');
 
 -- --------------------------------------------------------
 
@@ -122,6 +176,12 @@ ALTER TABLE `file`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `goal`
+--
+ALTER TABLE `goal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nid`
 --
 ALTER TABLE `nid`
@@ -131,6 +191,19 @@ ALTER TABLE `nid`
 -- Indexes for table `reference`
 --
 ALTER TABLE `reference`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sale_promotion`
+--
+ALTER TABLE `sale_promotion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `t_id` (`t_id`);
+
+--
+-- Indexes for table `type`
+--
+ALTER TABLE `type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -167,6 +240,12 @@ ALTER TABLE `file`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `goal`
+--
+ALTER TABLE `goal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `nid`
 --
 ALTER TABLE `nid`
@@ -179,6 +258,18 @@ ALTER TABLE `reference`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `sale_promotion`
+--
+ALTER TABLE `sale_promotion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -187,6 +278,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `sale_promotion`
+--
+ALTER TABLE `sale_promotion`
+  ADD CONSTRAINT `sale_promotion_ibfk_1` FOREIGN KEY (`t_id`) REFERENCES `type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
