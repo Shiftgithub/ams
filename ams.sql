@@ -35,21 +35,6 @@ CREATE TABLE `bad` (
   `branch` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `bad`
---
-
-INSERT INTO `bad` (`id`, `name`, `acc_no`, `branch`) VALUES
-(1, 'Jamal Mack', '52', 'Quis sapiente animi'),
-(2, 'Rahim Moon', '47', 'Ratione suscipit rer'),
-(4, 'Beck Waters', '9', 'Tempor molestiae lab'),
-(5, 'Hedley Brown', '94', 'Nesciunt voluptas n');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `client_profile`
---
 
 CREATE TABLE `client_profile` (
   `id` bigint(20) NOT NULL,
@@ -94,14 +79,6 @@ CREATE TABLE `contact` (
 --
 -- Dumping data for table `contact`
 --
-
-INSERT INTO `contact` (`id`, `email`, `phone`) VALUES
-(1, 'wafody@mailinator.com', '+1 (267) 475-2589'),
-(2, 'najucut@mailinator.com', '+1 (167) 538-2822'),
-(4, 'petukol@mailinator.com', '+1 (834) 419-1992'),
-(5, 'begavosydo@mailinator.com', '+1 (702) 871-3004');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `file`
@@ -150,13 +127,6 @@ CREATE TABLE `nid` (
 --
 -- Dumping data for table `nid`
 --
-
-INSERT INTO `nid` (`id`, `nid_no`) VALUES
-(1, '74'),
-(2, '83'),
-(4, '71'),
-(5, '21');
-
 -- --------------------------------------------------------
 
 --
@@ -172,12 +142,6 @@ CREATE TABLE `reference` (
 --
 -- Dumping data for table `reference`
 --
-
-INSERT INTO `reference` (`id`, `user_id`, `ref_user_id`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(4, 3, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -255,20 +219,12 @@ CREATE TABLE `users` (
   `b_id` int(11) NOT NULL,
   `f_id` int(11) NOT NULL,
   `n_id` int(11) NOT NULL,
-  `r_id` int(11) NOT NULL,
   `t_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
-
-INSERT INTO `users` (`id`, `name`, `c_id`, `b_id`, `f_id`, `n_id`, `r_id`, `t_id`) VALUES
-(1, 'Joy Sellers', 1, 1, 0, 1, 1, 1),
-(2, 'Solomon Carpenter', 2, 2, 0, 2, 2, 2),
-(3, 'Nadine Grimes', 4, 4, 0, 4, 2, 0),
-(4, 'Eugenia Estes', 5, 5, 0, 5, 4, 2);
-
 --
 -- Indexes for dumped tables
 --
