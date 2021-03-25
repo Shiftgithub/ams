@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2021 at 01:59 PM
+-- Generation Time: Mar 25, 2021 at 10:36 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -35,6 +35,35 @@ CREATE TABLE `bad` (
   `branch` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `client_profile` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `adress` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `software_user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_service_charge`
+--
+
+CREATE TABLE `client_service_charge` (
+  `id` bigint(20) NOT NULL,
+  `r_id` bigint(20) NOT NULL,
+  `month` varchar(255) NOT NULL,
+  `client_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -47,7 +76,9 @@ CREATE TABLE `contact` (
   `phone` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `contact`
+--
 
 --
 -- Table structure for table `file`
@@ -67,7 +98,7 @@ CREATE TABLE `file` (
 --
 
 CREATE TABLE `goal` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `percentage` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -93,6 +124,9 @@ CREATE TABLE `nid` (
   `nid_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `nid`
+--
 -- --------------------------------------------------------
 
 --
@@ -105,6 +139,9 @@ CREATE TABLE `reference` (
   `ref_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `reference`
+--
 -- --------------------------------------------------------
 
 --
@@ -115,6 +152,38 @@ CREATE TABLE `sale_promotion` (
   `id` int(11) NOT NULL,
   `t_id` int(11) NOT NULL,
   `profit_percentage` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sell_by_marketing_executive`
+--
+
+CREATE TABLE `sell_by_marketing_executive` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sell_log`
+--
+
+CREATE TABLE `sell_log` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `sell` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `clien_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -144,15 +213,18 @@ INSERT INTO `type` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(250) NOT NULL,
   `c_id` int(11) NOT NULL,
   `b_id` int(11) NOT NULL,
   `f_id` int(11) NOT NULL,
   `n_id` int(11) NOT NULL,
-  `r_id` int(11) NOT NULL
+  `t_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `users`
+--
 --
 -- Indexes for dumped tables
 --
@@ -161,6 +233,18 @@ CREATE TABLE `users` (
 -- Indexes for table `bad`
 --
 ALTER TABLE `bad`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client_profile`
+--
+ALTER TABLE `client_profile`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client_service_charge`
+--
+ALTER TABLE `client_service_charge`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -201,6 +285,18 @@ ALTER TABLE `sale_promotion`
   ADD KEY `t_id` (`t_id`);
 
 --
+-- Indexes for table `sell_by_marketing_executive`
+--
+ALTER TABLE `sell_by_marketing_executive`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sell_log`
+--
+ALTER TABLE `sell_log`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `type`
 --
 ALTER TABLE `type`
@@ -210,12 +306,7 @@ ALTER TABLE `type`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `b_id` (`b_id`),
-  ADD KEY `c_id` (`c_id`),
-  ADD KEY `f_id` (`f_id`),
-  ADD KEY `n_id` (`n_id`),
-  ADD KEY `r_id` (`r_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -225,13 +316,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bad`
 --
 ALTER TABLE `bad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `client_profile`
+--
+ALTER TABLE `client_profile`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `client_service_charge`
+--
+ALTER TABLE `client_service_charge`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `file`
@@ -243,25 +346,37 @@ ALTER TABLE `file`
 -- AUTO_INCREMENT for table `goal`
 --
 ALTER TABLE `goal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nid`
 --
 ALTER TABLE `nid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sale_promotion`
 --
 ALTER TABLE `sale_promotion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sell_by_marketing_executive`
+--
+ALTER TABLE `sell_by_marketing_executive`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sell_log`
+--
+ALTER TABLE `sell_log`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `type`
@@ -273,7 +388,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -284,16 +399,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `sale_promotion`
   ADD CONSTRAINT `sale_promotion_ibfk_1` FOREIGN KEY (`t_id`) REFERENCES `type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`b_id`) REFERENCES `bad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`c_id`) REFERENCES `contact` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`f_id`) REFERENCES `file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`n_id`) REFERENCES `nid` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_5` FOREIGN KEY (`r_id`) REFERENCES `reference` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
