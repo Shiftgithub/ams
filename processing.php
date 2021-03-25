@@ -15,51 +15,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //nid 
 
-    $nid = "INSERT INTO nid(nid_no) VALUES('$nid')";
-    $connection->query($nid);
+    if ($connection->autocommit(0) && $connection->begin_transaction()) {
 
-    $query = "SELECT id  FROM nid order by id desc limit 1 ";
-    $lastId = $connection->query($query);
-    $n_id = $lastId->fetch_object();
-    $n_id->id;
-  
-    //contact insert
+        $queryStatus = true;
 
-    $contact = "INSERT INTO contact(email,phone) VALUES('$email','$phone')";
-    $connection->query($contact);
+        if ($queryStatus) {
 
-    $query = "SELECT id  FROM contact order by id desc limit 1 ";
-    $lastId = $connection->query($query);
-    $c_id = $lastId->fetch_object();
-    $c_id->id;
+            $nid = "INSERT INTO nid(nid_no) VALUES('$nid')";
+            $connection->query($nid);
 
-    //Bank Detils
+            $query = "SELECT id  FROM nid order by id desc limit 1 ";
+            $lastId = $connection->query($query);
+            $n_id = $lastId->fetch_array();
+            $last_n_id = $n_id['id'];
+            if ($queryStatus) {
+                //contact insert
+                $contact = "INSERT INTO contact(email,phone) VALUES('$email','$phone')";
+                $connection->query($contact);
 
-    $bank = "INSERT INTO bad(name,acc_no,branch) VALUES('$bank_name','$back_acc','$bank_branch')";
-    $connection->query($bank);
+                $query = "SELECT id  FROM contact order by id desc limit 1 ";
+                $lastId = $connection->query($query);
+                $c_id = $lastId->fetch_array();
+                $last_c_id = $c_id['id'];
 
-    $query = "SELECT id  FROM bad order by id desc limit 1 ";
-    $lastId = $connection->query($query);
-    $b_id = $lastId->fetch_object();
-    $b_id->id;
+                if ($queryStatus) {
+                    //Bank Detils
 
-    //reference insert
+                    $bank = "INSERT INTO bad(name,acc_no,branch) VALUES('$bank_name','$back_acc','$bank_branch')";
+                    $connection->query($bank);
 
-    $reference = "INSERT INTO reference(ref_user_id) VALUES('$ref_id')";
-    $connection->query($reference);
+                    $query = "SELECT id  FROM bad order by id desc limit 1 ";
+                    $lastId = $connection->query($query);
+                    $b_id = $lastId->fetch_array();
+                    $last_b_id =  $b_id['id'];
 
-    $query = "SELECT id  FROM reference order by id desc limit 1 ";
-    $lastId = $connection->query($query);
-    $r_id = $lastId->fetch_object();
-    $r_id->id;
+                    if ($queryStatus) {
+                        //user insert
+                        $user = "INSERT INTO users(`name`,c_id,b_id,n_id,t_id) VALUES ('$name','$last_c_id','$last_b_id','$last_n_id','$t_id')";
+                        $connection->query($user);
 
-    //user insert
+                        $query = "SELECT id  FROM users order by id desc limit 1 ";
+                        $lastId = $connection->query($query);
+                        $u_id = $lastId->fetch_array();
+                        $last_u_id = $u_id['id'];
+                        if ($queryStatus) {
+                            //reference insert
 
-    $user = "INSERT INTO users(name) VALUES('$name')";
-   if ($connection->query($user) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $user . "<br>" . $connection->error;
+                            $reference = "INSERT INTO reference(user_id,ref_user_id) VALUES('$last_u_id','$ref_id')";
+                            $connection->query($reference);
+                        }
+                    }
+                }
+            }
+        }
+        if ($queryStatus) {
+            $connection->commit();
+            header("location:index.php");
+            return true;
+        } else {
+            $connection->rollback();
+        }
+   
     }
-    //header("location: index.php");
 }

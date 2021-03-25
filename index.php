@@ -15,7 +15,7 @@ include "db.php"; ?>
     <div class="container">
         <h1 class="bg-primary text-white text-center">Adova Soft Management System</h1>
 
-        <form action="processing.php" method="POST">
+        <form action="processing.php" method="POST"  autocomplete="off">
             <div class="form-group">
                 <label>Refarence Name </label>
                 <select class="form-control" name="ref_id">
