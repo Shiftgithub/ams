@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bad` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `acc_no` varchar(20) NOT NULL,
   `branch` varchar(100) NOT NULL
@@ -41,8 +41,8 @@ CREATE TABLE `client_profile` (
   `name` varchar(255) NOT NULL,
   `adress` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phone` int(11) NOT NULL,
-  `software_user_id` int(11) NOT NULL,
+  `phone` bigint(20) NOT NULL,
+  `software_user_id` bigint(20) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -71,7 +71,7 @@ CREATE TABLE `client_service_charge` (
 --
 
 CREATE TABLE `contact` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `email` varchar(250) NOT NULL,
   `phone` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -85,7 +85,7 @@ CREATE TABLE `contact` (
 --
 
 CREATE TABLE `file` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `cv` varchar(300) NOT NULL,
   `photo` varchar(300) NOT NULL,
   `character_certificate` varchar(300) NOT NULL
@@ -99,7 +99,7 @@ CREATE TABLE `file` (
 
 CREATE TABLE `goal` (
   `id` bigint(20) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `quantity` bigint(20) NOT NULL,
   `percentage` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -120,7 +120,7 @@ INSERT INTO `goal` (`id`, `quantity`, `percentage`) VALUES
 --
 
 CREATE TABLE `nid` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `nid_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -134,9 +134,9 @@ CREATE TABLE `nid` (
 --
 
 CREATE TABLE `reference` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `ref_user_id` int(11) NOT NULL
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `ref_user_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -149,9 +149,9 @@ CREATE TABLE `reference` (
 --
 
 CREATE TABLE `sale_promotion` (
-  `id` int(11) NOT NULL,
-  `t_id` int(11) NOT NULL,
-  `profit_percentage` int(11) NOT NULL
+  `id` bigint(20) NOT NULL,
+  `t_id` bigint(20) NOT NULL,
+  `profit_percentage` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -163,7 +163,7 @@ CREATE TABLE `sale_promotion` (
 CREATE TABLE `sell_by_marketing_executive` (
   `id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
-  `amount` int(11) NOT NULL,
+  `amount` bigint(20) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -178,8 +178,8 @@ CREATE TABLE `sell_by_marketing_executive` (
 CREATE TABLE `sell_log` (
   `id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
-  `sell` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
+  `sell` bigint(20) NOT NULL,
+  `amount` bigint(20) NOT NULL,
   `clien_id` bigint(20) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
@@ -193,7 +193,7 @@ CREATE TABLE `sell_log` (
 --
 
 CREATE TABLE `type` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -215,11 +215,11 @@ INSERT INTO `type` (`id`, `name`) VALUES
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `name` varchar(250) NOT NULL,
-  `c_id` int(11) NOT NULL,
-  `b_id` int(11) NOT NULL,
-  `f_id` int(11) NOT NULL,
-  `n_id` int(11) NOT NULL,
-  `t_id` int(11) NOT NULL
+  `c_id` bigint(20) NOT NULL,
+  `b_id` bigint(20) NOT NULL,
+  `f_id` bigint(20) NOT NULL,
+  `n_id` bigint(20) NOT NULL,
+  `t_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -316,7 +316,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bad`
 --
 ALTER TABLE `bad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `client_profile`
@@ -334,13 +334,13 @@ ALTER TABLE `client_service_charge`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `goal`
@@ -352,19 +352,19 @@ ALTER TABLE `goal`
 -- AUTO_INCREMENT for table `nid`
 --
 ALTER TABLE `nid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sale_promotion`
 --
 ALTER TABLE `sale_promotion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sell_by_marketing_executive`
@@ -382,7 +382,7 @@ ALTER TABLE `sell_log`
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

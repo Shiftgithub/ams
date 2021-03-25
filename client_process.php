@@ -3,9 +3,9 @@
 include "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+   
     $name = $_POST['name'];
-    $address = $_POST['name'];
+    $address = $_POST['address'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $nid = $_POST['nid'];
@@ -13,10 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $queryInsert = "INSERT INTO `client_profile`(`name`, `adress`, `email`, `phone`, `nid`,`created_at`) 
                     VALUES ('$name','$address','$email','$phone','$nid','$date')";
-    $connection->query($queryInsert);
-
-    // if($connection->query($queryInsert)){
-    //     echo "Client Data Inserted";
-    // }
-    header('Location: client_form.php');
+    if($connection->query($queryInsert)){
+        header('Location: client_form.php');
+    }else{
+        echo "Not inserted";
+    }
 }
