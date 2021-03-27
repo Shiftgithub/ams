@@ -15,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $clientInsert = "INSERT INTO `client_service_charge`(`r_id`, `month`, `amount`, `client_id`, `created_at`) 
                         VALUES ('$marketing_officer','$month','$amount','$client','$date')";
-                        
+
     if($connection->query($clientInsert)){
-        header('Location: client_form.php');
+        header('Location: client_service_charge.php');
     }else{
         echo "Not inserted";
     }
