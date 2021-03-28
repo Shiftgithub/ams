@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $queryInsert = "INSERT INTO `client_profile`(`name`, `adress`, `email`, `phone`, `nid`,`created_at`) 
                     VALUES ('$name','$address','$email','$phone','$nid','$date')";
+                    
     if($connection->query($queryInsert)){
         header('Location: client_form.php');
     }else{
