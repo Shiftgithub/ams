@@ -31,6 +31,20 @@ include "db.php"; ?>
                 </select>
             </div>
             <div class="form-group">
+                <label>Softwere Name</label>
+                <select class="form-control" name="softwere_id">
+                    <option>Select Softwere Name</option>
+                    <?php
+                    $query = "SELECT * FROM `softwere` ";
+                    $softweres =  $connection->query($query);
+                    foreach ($softweres as $softwere) : ?>
+                        <option value="<?= $softwere['id'] ?>">
+                            <?= $softwere['name']?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="sellQuantity">Sell Quantity</label>
                 <input type="number" name="sell_quantity" value="" id="sellQuantity" class="form-control">
             </div>

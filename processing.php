@@ -41,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($queryStatus) {
                     //Bank Detils
 
-                    $bank = "INSERT INTO bad(name,acc_no,branch) VALUES('$bank_name','$back_acc','$bank_branch')";
+                    $bank = "INSERT INTO bank_acc_detalis(name,acc_no,branch) VALUES('$bank_name','$back_acc','$bank_branch')";
                     $connection->query($bank);
 
-                    $query = "SELECT id  FROM bad order by id desc limit 1 ";
+                    $query = "SELECT id  FROM bank_acc_detalis order by id desc limit 1 ";
                     $lastId = $connection->query($query);
                     $b_id = $lastId->fetch_array();
                     $last_b_id =  $b_id['id'];
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         //user insert
                         $user = "INSERT INTO users(`name`,c_id,b_id,n_id,t_id) VALUES ('$name','$last_c_id','$last_b_id','$last_n_id','$t_id')";
                         $connection->query($user);
-
+                    
                         $query = "SELECT id  FROM users order by id desc limit 1 ";
                         $lastId = $connection->query($query);
                         $u_id = $lastId->fetch_array();
