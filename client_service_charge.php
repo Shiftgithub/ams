@@ -46,11 +46,11 @@ include "db.php"; ?>
             </div>
             <div class="form-group">
                 <label for="monthId">Month</label>
-                <input type="text" name="month" value="" id="monthId" class="form-control">
+                <input type="number" name="month" value="" id="monthId" class="form-control">
             </div>
             <div class="form-group">
                 <label for="amountId">Amount</label>
-                <input type="text" name="amount" value="" id="amountId" class="form-control">
+                <input type="number" name="amount" value="" id="amountId" class="form-control">
             </div>
             <div>
                 <button class="btn btn-success ">Submit</button>

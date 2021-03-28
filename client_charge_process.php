@@ -3,9 +3,6 @@
 include "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   
-    // var_dump($_POST);
-    // die();
 
     $marketing_officer = $_POST['marketing_officer'];
     $client = $_POST['client'];
