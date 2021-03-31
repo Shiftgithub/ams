@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         if ($queryStatus) {
             $connection->commit();
-            header("location:index.php");
+            header("location:user_form.php");
             return true;
         } else {
             $connection->rollback();
