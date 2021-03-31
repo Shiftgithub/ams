@@ -36,7 +36,7 @@ include "header.php"; ?>
         </div>
         <div class="form-group">
             <label for="monthId">Month</label>
-            <input type="number" name="month" value="" id="monthId" class="form-control">
+            <input type="text" name="month" value="" id="monthId" class="form-control">
         </div>
         <div class="form-group">
             <label for="amountId">Amount</label>
