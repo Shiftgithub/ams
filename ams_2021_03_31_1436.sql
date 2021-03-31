@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2021 at 04:01 PM
+-- Generation Time: Mar 31, 2021 at 10:35 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -25,28 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bad`
+-- Table structure for table `bank_acc_detalis`
 --
 
-CREATE TABLE `bad` (
-  `id` bigint(20) NOT NULL,
+CREATE TABLE `bank_acc_detalis` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `acc_no` varchar(20) NOT NULL,
   `branch` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `bad`
+-- Dumping data for table `bank_acc_detalis`
 --
 
-INSERT INTO `bad` (`id`, `name`, `acc_no`, `branch`) VALUES
-(6, 'Kelly Curry', '75', 'Nulla deserunt qui u'),
-(7, 'Fiona Sykes', '2', 'Ipsum exercitation d'),
-(8, 'Quinn Clarke', '94', 'Qui et nobis adipisi'),
-(9, 'Reed Richardson', '63', 'Qui in suscipit ad l'),
-(10, 'Jelani Faulkner', '46', 'Veniam ad est eos '),
-(11, 'Pearl Britt', '98', 'Adipisci nihil adipi'),
-(12, 'Hermione Chaney', '8', 'Rerum cupiditate lab');
+INSERT INTO `bank_acc_detalis` (`id`, `name`, `acc_no`, `branch`) VALUES
+(1, 'Bangladesh Bank', '1234567889', 'Keraniganj'),
+(2, 'Asia Bank', '8837628570923859', 'Dhaka'),
+(3, 'Tatiana Roman', '27', 'Ut doloribus recusan'),
+(4, 'Rowan Vaughan', '89', 'Eos voluptas in eu ');
 
 -- --------------------------------------------------------
 
@@ -55,13 +52,13 @@ INSERT INTO `bad` (`id`, `name`, `acc_no`, `branch`) VALUES
 --
 
 CREATE TABLE `client_profile` (
-  `id` bigint(20) NOT NULL,
+  `id` int(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `adress` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phone` bigint(20) NOT NULL,
-  `nid` int(20) NOT NULL,
-  `software_user_id` bigint(20) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `nid` int(11) NOT NULL,
+  `software_user_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -72,8 +69,13 @@ CREATE TABLE `client_profile` (
 --
 
 INSERT INTO `client_profile` (`id`, `name`, `adress`, `email`, `phone`, `nid`, `software_user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Bishawjit', 'Dhaka', 'bishawjit2021@gmail.com', 1674853492, 2147483647, 0, '2021-03-28 15:57:17', NULL, NULL),
-(2, 'Turan', 'Ut saepe et velit re', 'valir@mailinator.com', 1, 63, 0, '2021-03-28 15:57:29', NULL, NULL);
+(1, 'Althea Macdonald', 'Althea Macdonald', 'doruqatyr@mailinator.com', 1, 56, 0, '2021-03-25 07:45:07', NULL, NULL),
+(2, 'Althea Macdonald', 'Althea Macdonald', 'doruqatyr@mailinator.com', 1, 56, 0, '2021-03-25 07:45:18', NULL, NULL),
+(3, 'Tatiana Franco', 'Tatiana Franco', 'zakolo@mailinator.com', 1, 48, 0, '2021-03-25 07:45:42', NULL, NULL),
+(4, 'Colleen Oliver', 'Colleen Oliver', 'hyhywo@mailinator.com', 1, 60, 0, '2021-03-25 07:47:10', NULL, NULL),
+(5, 'Quinn Shelton', 'Quinn Shelton', 'relazypa@mailinator.com', 1, 74, 0, '2021-03-25 08:22:08', NULL, NULL),
+(6, 'Lacy Whitfield', 'Id nisi eveniet qui', 'lijusojyz@mailinator.com', 1, 94, 0, '2021-03-28 07:46:25', NULL, NULL),
+(7, 'Hamish Turner', 'Pariatur Modi porro', 'hyrim@mailinator.com', 1, 5, 0, '2021-03-28 07:46:31', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -82,11 +84,11 @@ INSERT INTO `client_profile` (`id`, `name`, `adress`, `email`, `phone`, `nid`, `
 --
 
 CREATE TABLE `client_service_charge` (
-  `id` bigint(20) NOT NULL,
-  `r_id` bigint(20) NOT NULL,
+  `id` int(20) NOT NULL,
+  `r_id` int(20) NOT NULL,
   `month` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `client_id` bigint(20) NOT NULL,
+  `client_id` int(20) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -97,8 +99,8 @@ CREATE TABLE `client_service_charge` (
 --
 
 INSERT INTO `client_service_charge` (`id`, `r_id`, `month`, `amount`, `client_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'january', 2300, 1, '2021-03-28 15:58:24', NULL, NULL),
-(2, 1, 'january', 5000, 2, '2021-03-28 15:58:34', NULL, NULL);
+(1, 4, '5', 10000, 2, '2021-03-28 08:18:40', NULL, NULL),
+(2, 3, '1', 2000, 3, '2021-03-28 08:20:26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -107,7 +109,7 @@ INSERT INTO `client_service_charge` (`id`, `r_id`, `month`, `amount`, `client_id
 --
 
 CREATE TABLE `contact` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `email` varchar(250) NOT NULL,
   `phone` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -117,13 +119,10 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `email`, `phone`) VALUES
-(6, 'wyhuwety@mailinator.com', '+1 (855) 742-3286'),
-(7, 'kyxivymu@mailinator.com', '+1 (621) 779-5869'),
-(8, 'digagexax@mailinator.com', '+1 (284) 523-4634'),
-(9, 'gykuqatef@mailinator.com', '+1 (272) 444-4004'),
-(10, 'mawujuv@mailinator.com', '+1 (413) 418-9839'),
-(11, 'difabefyro@mailinator.com', '+1 (851) 422-8433'),
-(12, 'labikycugi@mailinator.com', '+1 (985) 883-8289');
+(1, 'subratamondol@gmail.com', '01745989031'),
+(2, 'mamunmiaturan@gmail.com', '01965572363'),
+(3, 'hilaha@mailinator.com', '+1 (739) 806-5278'),
+(4, 'subydup@mailinator.com', '+1 (823) 545-1335');
 
 -- --------------------------------------------------------
 
@@ -132,7 +131,7 @@ INSERT INTO `contact` (`id`, `email`, `phone`) VALUES
 --
 
 CREATE TABLE `file` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `cv` varchar(300) NOT NULL,
   `photo` varchar(300) NOT NULL,
   `character_certificate` varchar(300) NOT NULL
@@ -145,8 +144,8 @@ CREATE TABLE `file` (
 --
 
 CREATE TABLE `goal` (
-  `id` bigint(20) NOT NULL,
-  `quantity` bigint(20) NOT NULL,
+  `id` int(20) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `percentage` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -167,7 +166,7 @@ INSERT INTO `goal` (`id`, `quantity`, `percentage`) VALUES
 --
 
 CREATE TABLE `nid` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `nid_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -176,13 +175,10 @@ CREATE TABLE `nid` (
 --
 
 INSERT INTO `nid` (`id`, `nid_no`) VALUES
-(6, '32'),
-(7, '30'),
-(8, '6'),
-(9, '21'),
-(10, '14'),
-(11, '78'),
-(12, '16');
+(1, '213435467687645'),
+(2, '123457686976542'),
+(3, '87'),
+(4, '4');
 
 -- --------------------------------------------------------
 
@@ -191,9 +187,9 @@ INSERT INTO `nid` (`id`, `nid_no`) VALUES
 --
 
 CREATE TABLE `reference` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `ref_user_id` bigint(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ref_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -201,7 +197,10 @@ CREATE TABLE `reference` (
 --
 
 INSERT INTO `reference` (`id`, `user_id`, `ref_user_id`) VALUES
-(1, 4, 8);
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 2),
+(4, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -210,9 +209,9 @@ INSERT INTO `reference` (`id`, `user_id`, `ref_user_id`) VALUES
 --
 
 CREATE TABLE `sale_promotion` (
-  `id` bigint(20) NOT NULL,
-  `t_id` bigint(20) NOT NULL,
-  `profit_percentage` bigint(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `profit_percentage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -222,9 +221,9 @@ CREATE TABLE `sale_promotion` (
 --
 
 CREATE TABLE `sell_by_marketing_executive` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `amount` bigint(20) NOT NULL,
+  `id` int(20) NOT NULL,
+  `user_id` int(20) NOT NULL,
+  `amount` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -237,15 +236,57 @@ CREATE TABLE `sell_by_marketing_executive` (
 --
 
 CREATE TABLE `sell_log` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `sell` bigint(20) NOT NULL,
-  `amount` bigint(20) NOT NULL,
-  `clien_id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `softwere_id` int(11) NOT NULL,
+  `sell` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sell_log`
+--
+
+INSERT INTO `sell_log` (`id`, `user_id`, `softwere_id`, `sell`, `amount`, `client_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 0, 2, 0, 0, 0, '0000-00-00 00:00:00', NULL, NULL),
+(2, 3, 3, 139, 93, 2, '2021-03-28 09:44:44', NULL, NULL),
+(3, 4, 3, 508, 13, 6, '2021-03-28 09:47:46', NULL, NULL),
+(4, 4, 3, 80, 80, 5, '2021-03-28 09:47:58', NULL, NULL),
+(5, 4, 1, 689, 52, 2, '2021-03-28 09:56:25', NULL, NULL),
+(6, 3, 0, 914, 84, 1, '2021-03-28 09:57:14', NULL, NULL),
+(7, 3, 0, 197, 19, 7, '2021-03-28 09:57:41', NULL, NULL),
+(8, 4, 1, 732, 43, 5, '2021-03-28 10:01:39', NULL, NULL),
+(9, 3, 1, 72, 80, 3, '2021-03-28 10:01:52', NULL, NULL),
+(10, 4, 1, 732, 43, 5, '2021-03-28 10:03:44', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `softwere`
+--
+
+CREATE TABLE `softwere` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `softwere`
+--
+
+INSERT INTO `softwere` (`id`, `name`, `description`, `created_at`) VALUES
+(1, 'MCA with bank', 'With bank', '0000-00-00 00:00:00'),
+(2, 'MCA without bank', 'WithOut bank', '0000-00-00 00:00:00'),
+(3, 'Inventory', 'Accounting', '0000-00-00 00:00:00'),
+(4, 'Billing', 'Accounting', '0000-00-00 00:00:00'),
+(5, 'CMS', 'Medical', '0000-00-00 00:00:00'),
+(6, 'prescription', 'medical', '2021-03-28 10:12:58');
 
 -- --------------------------------------------------------
 
@@ -254,7 +295,7 @@ CREATE TABLE `sell_log` (
 --
 
 CREATE TABLE `type` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -274,33 +315,34 @@ INSERT INTO `type` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL,
+  `id` int(20) NOT NULL,
   `name` varchar(250) NOT NULL,
-  `c_id` bigint(20) NOT NULL,
-  `b_id` bigint(20) NOT NULL,
-  `f_id` bigint(20) NOT NULL,
-  `n_id` bigint(20) NOT NULL,
-  `t_id` bigint(20) NOT NULL
+  `c_id` int(11) NOT NULL,
+  `b_id` int(11) NOT NULL,
+  `f_id` int(11) NOT NULL,
+  `n_id` int(11) NOT NULL,
+  `r_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `c_id`, `b_id`, `f_id`, `n_id`, `t_id`) VALUES
-(1, 'Brenden Ashley', 9, 9, 0, 9, 3),
-(2, 'Lionel Green', 10, 10, 0, 10, 2),
-(3, 'Kelsie Donaldson', 11, 11, 0, 11, 3),
-(4, 'Yen Thompson', 12, 12, 0, 12, 3);
+INSERT INTO `users` (`id`, `name`, `c_id`, `b_id`, `f_id`, `n_id`, `r_id`, `t_id`) VALUES
+(1, 'Subrata Mondol', 1, 1, 1, 1, 1, 1),
+(2, 'Mamun Mia Turan', 2, 2, 1, 2, 1, 2),
+(3, 'Bishawjit', 3, 3, 1, 3, 2, 2),
+(4, 'Sajib', 4, 4, 1, 4, 2, 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `bad`
+-- Indexes for table `bank_acc_detalis`
 --
-ALTER TABLE `bad`
+ALTER TABLE `bank_acc_detalis`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -344,8 +386,7 @@ ALTER TABLE `nid`
 -- Indexes for table `reference`
 --
 ALTER TABLE `reference`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sale_promotion`
@@ -364,9 +405,13 @@ ALTER TABLE `sell_by_marketing_executive`
 -- Indexes for table `sell_log`
 --
 ALTER TABLE `sell_log`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `clien_id` (`clien_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `softwere`
+--
+ALTER TABLE `softwere`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `type`
@@ -378,89 +423,99 @@ ALTER TABLE `type`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `users_ibfk_1` (`t_id`),
+  ADD KEY `b_id` (`b_id`),
+  ADD KEY `n_id` (`n_id`),
+  ADD KEY `c_id` (`c_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `bad`
+-- AUTO_INCREMENT for table `bank_acc_detalis`
 --
-ALTER TABLE `bad`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `bank_acc_detalis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `client_profile`
 --
 ALTER TABLE `client_profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `client_service_charge`
 --
 ALTER TABLE `client_service_charge`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `goal`
 --
 ALTER TABLE `goal`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nid`
 --
 ALTER TABLE `nid`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sale_promotion`
 --
 ALTER TABLE `sale_promotion`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sell_by_marketing_executive`
 --
 ALTER TABLE `sell_by_marketing_executive`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sell_log`
 --
 ALTER TABLE `sell_log`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `softwere`
+--
+ALTER TABLE `softwere`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -469,13 +524,8 @@ ALTER TABLE `users`
 --
 -- Constraints for table `client_service_charge`
 --
-
-
---
--- Constraints for table `reference`
---
-ALTER TABLE `reference`
-  ADD CONSTRAINT `reference_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `client_service_charge`
+  ADD CONSTRAINT `client_service_charge_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client_profile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sale_promotion`
@@ -484,11 +534,13 @@ ALTER TABLE `sale_promotion`
   ADD CONSTRAINT `sale_promotion_ibfk_1` FOREIGN KEY (`t_id`) REFERENCES `type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sell_log`
+-- Constraints for table `users`
 --
-ALTER TABLE `sell_log`
-  ADD CONSTRAINT `sell_log_ibfk_1` FOREIGN KEY (`clien_id`) REFERENCES `client_profile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `sell_log_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`t_id`) REFERENCES `type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`b_id`) REFERENCES `bank_acc_detalis` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`n_id`) REFERENCES `nid` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`c_id`) REFERENCES `contact` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

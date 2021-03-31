@@ -8,9 +8,9 @@ include "header.php"; ?>
 
     <form action="user_form_processing.php" method="POST" autocomplete="off">
         <div class="form-group">
-            <label>Refarence Name </label>
+            <label>Reference Name </label>
             <select class="form-control" name="ref_id">
-                <option>Select Refarence Name</option>
+                <option>Select Reference Name</option>
                 <?php
                 $query = "SELECT reference.id, users.name FROM `reference` INNER JOIN users ON reference.user_id = users.id ";
                 $references =  mysqli_query($connection, $query);
