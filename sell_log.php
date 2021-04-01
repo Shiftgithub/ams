@@ -13,10 +13,10 @@ include "header.php"; ?>
                 <option>Select Marketing Officer's Name</option>
                 <?php
                 $query = "SELECT users.id, users.name FROM `users` INNER JOIN TYPE ON users.t_id = TYPE.id WHERE TYPE .id = 3 ";
-                $types =  $connection->query($query);
-                foreach ($types as $type) : ?>
-                    <option value="<?= $type['id'] ?>">
-                        <?= $type['name'] ?>
+                $users =  $connection->query($query);
+                foreach ($users as $user) : ?>
+                    <option value="<?= $user['id'] ?>">
+                        <?= $user['id'] . '  . ' . $user['name'] ?>
                     </option>
                 <?php endforeach; ?>
             </select>
