@@ -1,6 +1,6 @@
 <?php
 include "db.php";
-include "header.php"; ?>
+include "Layout/header.php"; ?>
 
 <div class="container">
     <h4>User create</h4>

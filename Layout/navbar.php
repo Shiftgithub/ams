@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>AMS</title>
-  <!--Add page Responsive Web Design link  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--Add Bootstrap link-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- fontawesome cdn-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<style type="">
-  a:hover{
-    color:white;
-  }
-</style>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
     <a class="navbar-brand" href="">
       <img style="width: 40px" src="https://media-exp1.licdn.com/dms/image/C560BAQGKA0sqbEABtw/company-logo_200_200/0/1571811031767?e=2159024400&v=beta&t=3ryMQJgOPQw2G407hYfH5bIoFskLpUzBX5suM1gJIHg">
     </a>
