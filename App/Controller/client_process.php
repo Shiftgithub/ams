@@ -1,6 +1,6 @@
 <?php
  
-include "db.php";
+ include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     VALUES ('$name','$address','$email','$phone','$nid','$date')";
                     
     if($connection->query($queryInsert)){
-        header('Location: client_form.php');
+        header('Location: ../View/client_form.php');
     }else{
         echo "Not inserted";
     }

@@ -1,6 +1,6 @@
 <?php
 
-include "db.php";
+include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $softwereInsert = "INSERT INTO `softwere`(`name`, `description`,`created_at`)
      VALUES ('$name','$description','$date')";
     if ($connection->query($softwereInsert)) {
-        header('Location: softwere.php');
+        header('Location: ../View/softwere.php');
     } else {
         echo "Not inserted";
     }

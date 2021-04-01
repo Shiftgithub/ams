@@ -1,5 +1,6 @@
 <?php
-include "db.php";
+
+include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -53,14 +54,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         //user insert
                         $user = "INSERT INTO users(`name`,c_id,b_id,n_id,t_id) VALUES ('$name','$last_c_id','$last_b_id','$last_n_id','$t_id')";
                         $connection->query($user);
-                    
+
                         $query = "SELECT id  FROM users order by id desc limit 1 ";
                         $lastId = $connection->query($query);
                         $u_id = $lastId->fetch_array();
                         $last_u_id = $u_id['id'];
                         if ($queryStatus) {
                             //reference insert
-
                             $reference = "INSERT INTO reference(user_id,ref_user_id) VALUES('$last_u_id','$ref_id')";
                             $connection->query($reference);
                         }
@@ -70,11 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         if ($queryStatus) {
             $connection->commit();
-            header("location:user_form.php");
+            header("location:../View/user_form.php");
             return true;
         } else {
             $connection->rollback();
         }
-   
     }
 }

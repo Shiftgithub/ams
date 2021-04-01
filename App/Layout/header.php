@@ -17,4 +17,4 @@
 </style>
 
 <body>
-  <?php include "Layout/navbar.php";  ?>
+  <?php include "navbar.php";  ?>

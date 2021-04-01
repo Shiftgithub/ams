@@ -1,6 +1,6 @@
 <?php
 
-include "db.php";
+include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: sell_log.php');
         } else ($connection->query("INSERT INTO `sell_by_marketing_executive`(`user_id`, `amount`,`created_at`)
         VALUES ('$marketing_officer','$amount','$date')"));
-       header('Location: sell_log.php');
+       header('Location: ../View/sell_log.php');
     } else {
         echo "Not inserted";
     }

@@ -1,10 +1,10 @@
 <?php
-include "header.php"; ?>
+include "../Layout/header.php"; ?>
 
 <div class="container">
     <h4>Client Create</h4>
     <hr>
-    <form action="client_process.php" method="POST">
+    <form action="../Controller/client_process.php" method="POST">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" value="" id="name" placeholder="Enter your name" class="form-control">
@@ -31,4 +31,4 @@ include "header.php"; ?>
     </form>
 </div>
 
-<?php include "footer.php"; ?>
+<?php include "../Layout/footer.php"; ?>

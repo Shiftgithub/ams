@@ -1,6 +1,6 @@
 <?php
  
-include "db.php";
+ include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         VALUES ('$marketing_officer','$month','$amount','$client','$date')";
 
     if($connection->query($clientInsert)){
-        header('Location: client_service_charge.php');
+        header('Location: ../View/client_service_charge.php');
     }else{
         echo "Not inserted";
     }

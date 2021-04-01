@@ -1,11 +1,11 @@
 <?php
-include "db.php";
-include "header.php"; ?>
+include "../Model/db.php";
+include "../Layout/header.php"; ?>
 
 <div class="container">
     <h4>Softwere Insert</h4>
     <hr>
-        <form action="softwereProcessing.php" method="POST">
+        <form action="../Controller/softwereProcessing.php" method="POST">
             <div class="form-group">
                 <label for="softwereId">Softwere Name</label>
                 <input type="text" name="softwere_name" value="" id="softwereId" class="form-control">
@@ -20,4 +20,4 @@ include "header.php"; ?>
         </form>
 </div>
 
-<?php include "footer.php"; ?>
+<?php include "../Layout/footer.php"; ?>

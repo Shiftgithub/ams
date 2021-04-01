@@ -22,10 +22,10 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form action="processing.php" method="POST">
+                <form action="../ams/App/Controller/processing.php" method="POST">
                     <div class="form-group">
-                        <label for="email">Email </label>
-                        <input type="email" name="email" value="" id="email" class="form-control">
+                        <label for="email">User Name </label>
+                        <input type="email" name="username" value="" id="email" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Password </label>

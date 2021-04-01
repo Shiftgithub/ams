@@ -1,12 +1,12 @@
 <?php
-include "db.php";
-include "header.php"; ?>
+include "../Model/db.php";
+include "../Layout/header.php"; ?>
 
 <div class="container">
     <h4>Sell Log Create</h4>
     <hr>
 
-    <form action="sell_log_process.php" method="POST">
+    <form action="../Controller/sell_log_process.php" method="POST">
         <div class="form-group">
             <label>Marketing Officer's Name</label>
             <select class="form-control" name="marketing_officer">
@@ -63,4 +63,4 @@ include "header.php"; ?>
     </form>
 </div>
 
-<?php include "footer.php"; ?>
+<?php include "../Layout/footer.php"; ?>

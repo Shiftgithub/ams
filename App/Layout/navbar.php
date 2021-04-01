@@ -39,8 +39,8 @@
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="sell_by_marketing_executive.php">
-            <h5>Sell by Marketing Executive</h5>
+          <a class="nav-link" href="logout_processing.php">
+            <h5>LOGOUT</h5>
           </a>
         </li>
       </ul>

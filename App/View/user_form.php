@@ -1,12 +1,12 @@
 <?php
-include "db.php";
-include "Layout/header.php"; ?>
+include "../Model/db.php";
+include "../Layout//header.php"; ?>
 
 <div class="container">
     <h4>User create</h4>
     <hr>
 
-    <form action="user_form_processing.php" method="POST" autocomplete="off">
+    <form action="../Controller/user_form_processing.php" method="POST" autocomplete="off">
         <div class="form-group">
             <label>Reference Name </label>
             <select class="form-control" name="ref_id">
@@ -69,4 +69,4 @@ include "Layout/header.php"; ?>
     </form>
 </div>
 
-<?php include "footer.php"; ?>
+<?php include "../Layout//footer.php"; ?>
